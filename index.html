@@ -6,7 +6,7 @@
   <title>297 Σύστημα Προσκόπων Λατσιών – Troop Board</title>
   <style>
     :root{
-      /* Theme: green + orange */
+      /* Green + Orange theme */
       --bg:#14532d;            /* deep green background */
       --panel:#15803d;         /* modal panel */
       --muted:#fef3c7;         /* warm text */
@@ -99,10 +99,17 @@
     </form>
   </dialog>
 
+  <!-- Admin Reset (code-protected) -->
+  <button id="adminReset" aria-label="Reset unlocked profiles"
+    style="position:fixed;bottom:12px;right:12px;z-index:9999;padding:10px 14px;background:#ea580c;color:#fff;border:none;border-radius:10px;cursor:pointer;opacity:.6;backdrop-filter:blur(4px)"
+    onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.6">
+    Reset
+  </button>
+
   <script>
     // === Members (20) ===
     const members = [
-      {id:'1', name:'Άνθια',        role:'', image:'images/anthia.jpg',        code:'code1'},
+      {id:'1', name:'Άνθια',        role:'Αρχηγάρα', image:'images/anthia.jpg',        code:'eliailoveyou'},
       {id:'2', name:'Μιχάλης',      role:'', image:'images/michalis.jpg',      code:'code2'},
       {id:'3', name:'Ραφαέλλα',     role:'', image:'images/rafaella.jpg',      code:'code3'},
       {id:'4', name:'Γιώργος',      role:'', image:'images/giorgos.jpg',       code:'code4'},
@@ -144,10 +151,10 @@
         const card = document.createElement('article');
         card.className = 'card' + (isUnlocked ? '' : ' locked');
         card.innerHTML = `
-          <div class="thumbnail">${isUnlocked ? `<img src="${m.image}" alt="${m.name}" />` : 'Locked'}</div>
-          <div class="body">
-            <div class="name">${m.name}</div>
-            <div class="role">${isUnlocked ? (m.role||'') : 'Locked'}</div>
+          <div class=\"thumbnail\">${isUnlocked ? `<img src=\"${m.image}\" alt=\"${m.name}\" />` : 'Locked'}</div>
+          <div class=\"body\">
+            <div class=\"name\">${m.name}</div>
+            <div class=\"role\">${isUnlocked ? (m.role||'') : 'Locked'}</div>
           </div>`;
         if(!isUnlocked){ card.addEventListener('click', ()=> openDialog(m)); }
         grid.appendChild(card);
@@ -181,6 +188,23 @@
 
     unlockBtn.addEventListener('click', (e)=>{ e.preventDefault(); verify(); });
     codeInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); verify(); }});
+
+    // Admin reset with passcode
+    (function(){
+      const ADMIN_CODE = 'Troop297Reset2025'; // ← change to your secret
+      const btn = document.getElementById('adminReset');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const code = prompt('Enter admin reset code:');
+        if (code === ADMIN_CODE) {
+          localStorage.removeItem('unlockedMembers');
+          alert('All profiles have been reset and are now locked.');
+          location.reload();
+        } else if (code !== null) {
+          alert('Wrong code.');
+        }
+      });
+    })();
 
     render();
   </script>
