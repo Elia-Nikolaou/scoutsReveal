@@ -103,7 +103,7 @@
     const db = getDatabase(appFB);
     const unlockedRef = ref(db, 'unlocked');
     const members = [
-      { id:'1',  name:'Άνθια', role:'ΑΡΧΗΓΟΣ ΓKΛΙΤΕΡ', image:'images/anthia.jpg', code:'eliaiseteleia' },
+      { id:'1',  name:'Άνθια', role:'ΑΡΧΗΓΟΣ ΓKΛΙΤΕΡ', image:'images/anthia.jpg', code:'eliaiseteleia', question:'Ποιο είναι το αγαπημένο σου χρώμα;' },
       { id:'2',  name:'Μιχάλης', role:'Υπαρχηγός Ομάδας', image:'images/michalis.jpg', code:'apostolaris' },
       { id:'3',  name:'Ραφαέλλα', role:'Υπαρχηγός Ομάδας + Αποθήκη', image:'images/rafaella.jpg', code:'argigos' },
       { id:'4',  name:'Γιώργος', role:'Αρχηγός Ομάδας (ΑΟΠ)', image:'images/giorgos.jpg', code:'anthia' },
@@ -151,10 +151,13 @@
     function openDialog(member){
       currentMember = member;
       document.getElementById('dlgMsg').textContent = '';
+      document.getElementById('dlgSubtitle').textContent = member.question;
       const codeInput = document.getElementById('codeInput');
       codeInput.value='';
       document.getElementById('unlockDialog').showModal();
       setTimeout(()=>codeInput.focus(), 50);
+      
+
     }
     async function verify(){
       if(!currentMember) return;
