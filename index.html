@@ -102,26 +102,26 @@
     const db = getDatabase(appFB);
     const unlockedRef = ref(db, 'unlocked');
     const members = [
-      { id:'1',  name:'Άνθια', role:'', image:'images/anthia.jpg', code:'code1' },
-      { id:'2',  name:'Μιχάλης', role:'', image:'images/michalis.jpg', code:'code2' },
-      { id:'3',  name:'Ραφαέλλα', role:'', image:'images/rafaella.jpg', code:'code3' },
-      { id:'4',  name:'Γιώργος', role:'', image:'images/giorgos.jpg', code:'code4' },
-      { id:'5',  name:'Βάνια', role:'', image:'images/vania.jpg', code:'code5' },
-      { id:'6',  name:'Κατερίνα', role:'', image:'images/katerina.jpg', code:'code6' },
-      { id:'7',  name:'Φωτεινή', role:'', image:'images/fotini.jpg', code:'code7' },
-      { id:'8',  name:'Ιωάννα', role:'', image:'images/ioanna.jpg', code:'code8' },
-      { id:'9',  name:'Μύρια', role:'', image:'images/myria.jpg', code:'code9' },
-      { id:'10', name:'Έλια', role:'', image:'images/elia.jpg', code:'code10' },
-      { id:'11', name:'Βαρνάβας', role:'', image:'images/varnavas.jpg', code:'code11' },
-      { id:'12', name:'Δήμητρα', role:'', image:'images/dimitra.jpg', code:'code12' },
-      { id:'13', name:'Δέσποινα', role:'', image:'images/despoina.jpg', code:'code13' },
-      { id:'14', name:'Μάρκος', role:'', image:'images/markos.jpg', code:'code14' },
-      { id:'15', name:'Μαρία Π.', role:'', image:'images/maria-p.jpg', code:'code15' },
-      { id:'16', name:'Μαρία Χ.', role:'', image:'images/maria-x.jpg', code:'code16' },
-      { id:'17', name:'Μαρία Τ.', role:'', image:'images/maria-t.jpg', code:'code17' },
-      { id:'18', name:'Άνθια Μικρή', role:'', image:'images/anthia-mikri.jpg', code:'code18' },
-      { id:'19', name:'Αγγέλα', role:'', image:'images/aggela.jpg', code:'code19' },
-      { id:'20', name:'Αχιλλέας', role:'', image:'images/achilleas.jpg', code:'code20' }
+      { id:'1',  name:'Άνθια', role:'ΑΡΧΗΓΟΣ ΓΛΙΤΕΡ', image:'images/anthia.jpg', code:'code1' },
+      { id:'2',  name:'Μιχάλης', role:'Υπαρχηγός Ομάδας', image:'images/michalis.jpg', code:'code2' },
+      { id:'3',  name:'Ραφαέλλα', role:'Υπαρχηγός Ομάδας', image:'images/rafaella.jpg', code:'code3' },
+      { id:'4',  name:'Γιώργος', role:'Αρχηγός Ομάδας (ΑΟΠ)', image:'images/giorgos.jpg', code:'code4' },
+      { id:'5',  name:'Βάνια', role:'Αρχηγός Αγέλης (ΑΑΛ)', image:'images/vania.jpg', code:'code5' },
+      { id:'6',  name:'Κατερίνα', role:'Υπαρχηγός Κοινότητας', image:'images/katerina.jpg', code:'code6' },
+      { id:'7',  name:'Φωτεινή', role:'Αρχηγός Κοινότητας (ΑΚΑ)', image:'images/fotini.jpg', code:'code7' },
+      { id:'8',  name:'Ιωάννα', role:'Υπαρχηγός Κοινότητας', image:'images/ioanna.jpg', code:'code8' },
+      { id:'9',  name:'Μύρια', role:'Υπαρχηγός Κοινότητας', image:'images/myria.jpg', code:'code9' },
+      { id:'10', name:'Έλια', role:'Υπαρχηγός Αγέλης but ✈️', image:'images/elia.jpg', code:'code10' },
+      { id:'11', name:'Βαρνάβας', role:'Υπαρχηγός Αγέλης but ✈️', image:'images/varnavas.jpg', code:'code11' },
+      { id:'12', name:'Δήμητρα', role:'Υπαρχηγός Αγέλης', image:'images/dimitra.jpg', code:'code12' },
+      { id:'13', name:'Δέσποινα', role:'Υπαρχηγός Αγέλης', image:'images/despoina.jpg', code:'code13' },
+      { id:'14', name:'Μάρκος', role:'Υπαρχηγός Ομάδας but ✈️', image:'images/markos.jpg', code:'code14' },
+      { id:'15', name:'Μαρία Π.', role:'Υπαρχηγός Αγέλης but ✈️', image:'images/maria-p.jpg', code:'code15' },
+      { id:'16', name:'Μαρία Χ.', role:'Υπαρχηγός Αγέλης', image:'images/maria-x.jpg', code:'code16' },
+      { id:'17', name:'Μαρία Τ.', role:'Υπαρχηγός Αγέλης', image:'images/maria-t.jpg', code:'code17' },
+      { id:'18', name:'Άνθια Μικρή', role:'Υπαρχηγός Αγέλης', image:'images/anthia-mikri.jpg', code:'code18' },
+      { id:'19', name:'Αγγέλα', role:'Υπαρχηγός Αγέλης', image:'images/aggela.jpg', code:'code19' },
+      { id:'20', name:'Αχιλλέας', role:'Υπαρχηγός Κοινότητας but ✈️', image:'images/achilleas.jpg', code:'code20' }
     ];
     let unlocked = new Set();
     let currentMember = null;
