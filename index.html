@@ -6,18 +6,15 @@
   <title>297 Σύστημα Προσκόπων Λατσιών – Troop Board</title>
   <style>
     :root{
-      /* Green + Orange theme */
-      --bg:#14532d;            /* deep green background */
-      --panel:#15803d;         /* modal panel */
-      --muted:#fef3c7;         /* warm text */
-      --accent:#22c55e;        /* green */
-      --accent-light:#4ade80;  /* bright green */
-      --accent2:#ea580c;       /* orange */
-      --accent2-light:#fb923c; /* light orange */
-      --good:#4ade80;
-      --bad:#ef4444;
+      --bg:#14532d;
+      --panel:#15803d;
+      --muted:#fef3c7;
+      --accent:#22c55e;
+      --accent-light:#4ade80;
+      --accent2:#ea580c;
+      --accent2-light:#fb923c;
+      --good:#4ade80; --bad:#ef4444;
     }
-
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
@@ -26,66 +23,49 @@
         radial-gradient(1000px 700px at 5% -10%, var(--accent-light) 0, transparent 60%),
         radial-gradient(1200px 800px at 105% 15%, var(--accent2-light) 0, transparent 50%),
         var(--bg);
-      color:#fff7ed;
-      display:flex; flex-direction:column; min-height:100%;
+      color:#fff7ed; display:flex; flex-direction:column; min-height:100%;
     }
-
     header{
-      padding:24px 20px; position:sticky; top:0; z-index:10; backdrop-filter: blur(10px);
-      background:linear-gradient(180deg, rgba(20,83,45,.95), rgba(20,83,45,0));
+      padding:24px 20px; position:sticky; top:0; z-index:10;
+      background: var(--accent2); color: white;
       border-bottom:1px solid rgba(255,255,255,.08)
     }
     .top{display:flex; gap:16px; align-items:center; justify-content:space-between; max-width:1100px; margin:0 auto}
-    h1{font-size:clamp(20px, 2.4vw, 36px); color:var(--accent2-light); font-weight:800}
-
-    .wrap{ width:min(1100px, 100%); margin:0 auto; padding:24px }
-    .grid{ display:grid; gap:20px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-
-    .card{ background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border:3px solid var(--accent2); border-radius:20px; overflow:hidden; position:relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25); transition: transform .18s ease, box-shadow .18s ease; cursor:pointer; }
-    .card:hover{ transform: translateY(-3px) scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,0.35); }
-
-    .thumbnail{ aspect-ratio: 4/3; background:#052e16; display:grid; place-items:center; font-size:22px; font-weight:700; color:var(--accent2-light); padding:22px; text-align:center; }
-    .thumbnail img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .locked .thumbnail img{ display:none; } /* hide image until unlocked */
-
-    .body{ padding:16px }
-    .name{ font-weight:800; font-size:18px; margin-bottom:4px }
-    .role{ color:var(--muted); font-size:14px }
-
-    footer{ color:var(--muted); text-align:center; margin:auto 0 24px; font-size:12px }
-
-    /* Centered unlock dialog */
-    dialog{ border:none; border-radius:22px; padding:0; width:min(640px, 96vw); max-width:96vw;
-      background: var(--panel); color:#fff7ed; box-shadow:0 24px 60px rgba(0,0,0,.55);
-      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); }
-    dialog::backdrop{ background: rgba(0,0,0,.6) }
-    .modal{ padding:44px 38px; display:grid; gap:28px }
-    .modal h3{ margin:0; font-size:28px; font-weight:800 }
-    .row{ display:flex; gap:16px; align-items:center; flex-wrap:wrap }
-    input[type=password]{ flex:1 1 380px; background:#052e16; color:#fff7ed; border:2px solid var(--accent2-light); border-radius:18px; padding:22px; font-size:20px; }
-    button{ background: linear-gradient(180deg, var(--accent2-light), var(--accent2)); color:#001418; border:none; border-radius:18px; padding:18px 28px; font-weight:800; font-size:18px; cursor:pointer; transition: transform .15s ease }
-    button:hover{ transform: translateY(-1px) }
-    .ghost{ background:transparent; border:1px solid rgba(255,255,255,0.18); color:#e5e7eb; font-size:16px; padding:16px 24px; border-radius:16px }
-    .msg{ font-size:15px }
-    .ok{ color:var(--good) } .err{ color:var(--bad) }
+    h1{font-size:clamp(20px, 2.4vw, 36px); color:white; font-weight:800}
+    .wrap{width:min(1100px, 100%); margin:0 auto; padding:24px}
+    .grid{display:grid; gap:20px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border:3px solid var(--accent2); border-radius:20px; overflow:hidden; position:relative; box-shadow: 0 10px 30px rgba(0,0,0,0.25); transition: transform .18s ease, box-shadow .18s ease; cursor:pointer;}
+    .card:hover{transform: translateY(-3px) scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,0.35);}
+    .thumbnail{aspect-ratio: 4/3; background:#052e16; display:grid; place-items:center; font-size:22px; font-weight:700; color:var(--accent2-light); padding:22px; text-align:center;}
+    .thumbnail img{width:100%; height:100%; object-fit:cover; display:block;}
+    .locked .thumbnail img{display:none;}
+    .locked .thumbnail{color:transparent;}
+    .body{padding:16px}
+    .name{font-weight:800; font-size:18px; margin-bottom:4px}
+    .role{color:var(--muted); font-size:14px}
+    footer{color:var(--muted); text-align:center; margin:auto 0 24px; font-size:12px}
+    dialog{border:none; border-radius:22px; padding:0; width:min(640px, 96vw); max-width:96vw; background: var(--panel); color:#fff7ed; box-shadow:0 24px 60px rgba(0,0,0,.55); position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);} 
+    dialog::backdrop{background: rgba(0,0,0,.6)}
+    .modal{padding:44px 38px; display:grid; gap:28px}
+    .modal h3{margin:0; font-size:28px; font-weight:800}
+    .row{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+    input[type=password]{flex:1 1 380px; background:#052e16; color:#fff7ed; border:2px solid var(--accent2-light); border-radius:18px; padding:22px; font-size:20px;}
+    button{background: linear-gradient(180deg, var(--accent2-light), var(--accent2)); color:#001418; border:none; border-radius:18px; padding:18px 28px; font-weight:800; font-size:18px; cursor:pointer; transition: transform .15s ease}
+    button:hover{transform: translateY(-1px)}
+    .ghost{background:transparent; border:1px solid rgba(255,255,255,0.18); color:#e5e7eb; font-size:16px; padding:16px 24px; border-radius:16px}
+    .msg{font-size:15px} .ok{color:var(--good)} .err{color:var(--bad)}
+    #adminReset{position:fixed;bottom:12px;right:12px;z-index:9999;padding:10px 14px;background:#ea580c;color:#fff;border:none;border-radius:10px;cursor:pointer;opacity:.6;backdrop-filter:blur(4px)}
+    #adminReset:hover{opacity:1}
   </style>
 </head>
 <body>
   <header>
-    <div class="top">
-      <h1>297 Σύστημα Προσκόπων Λατσιών</h1>
-    </div>
+    <div class="top"><h1>297 Σύστημα Προσκόπων Λατσιών</h1></div>
   </header>
-
   <main id="app" class="wrap"></main>
-
   <footer>
-    <p>Note: This is for fun—codes are checked only in your browser (not secure).</p>
+    <p>Σημείωση: Είναι για διασκέδαση — οι κωδικοί ελέγχονται στον φυλλομετρητή (client-side). Τα ξεκλειδώματα συγχρονίζονται για όλους μέσω Firebase.</p>
   </footer>
-
-  <!-- Unlock Dialog -->
   <dialog id="unlockDialog">
     <form method="dialog" class="modal" id="dialogForm">
       <h3 id="dlgTitle">Unlock</h3>
@@ -98,115 +78,103 @@
       <div class="msg" id="dlgMsg"></div>
     </form>
   </dialog>
-
-  <!-- Admin Reset (code-protected) -->
-  <button id="adminReset" aria-label="Reset unlocked profiles"
-    style="position:fixed;bottom:12px;right:12px;z-index:9999;padding:10px 14px;background:#ea580c;color:#fff;border:none;border-radius:10px;cursor:pointer;opacity:.6;backdrop-filter:blur(4px)"
-    onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=.6">
-    Reset
-  </button>
-
-  <script>
-    // === Members (20) ===
+  <button id="adminReset" aria-label="Reset unlocked profiles">Reset</button>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getDatabase, ref, get, set, onValue } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+    const firebaseConfig = { apiKey: "AIzaSyC6zmofAm4TNnhhvhmZs8f5_utV0GEGHmg", authDomain: "scoutsreveal.firebaseapp.com", databaseURL: "https://scoutsreveal-default-rtdb.firebaseio.com", projectId: "scoutsreveal", storageBucket: "scoutsreveal.firebasestorage.app", messagingSenderId: "509893593904", appId: "1:509893593904:web:250f3032a724937d2716f5", measurementId: "G-ZE6W3G5QVE"};
+    const appFB = initializeApp(firebaseConfig);
+    const db = getDatabase(appFB);
+    const unlockedRef = ref(db, 'unlocked');
     const members = [
-      {id:'1', name:'Άνθια',        role:'Αρχηγάρα', image:'images/anthia.png',        code:'eliailoveyou'},
-      {id:'2', name:'Μιχάλης',      role:'', image:'images/michalis.jpg',      code:'code2'},
-      {id:'3', name:'Ραφαέλλα',     role:'', image:'images/rafaella.jpg',      code:'code3'},
-      {id:'4', name:'Γιώργος',      role:'', image:'images/giorgos.jpg',       code:'code4'},
-      {id:'5', name:'Βάνια',        role:'', image:'images/vania.jpg',         code:'code5'},
-      {id:'6', name:'Κατερίνα',     role:'', image:'images/katerina.jpg',      code:'code6'},
-      {id:'7', name:'Φωτεινή',      role:'', image:'images/fotini.jpg',        code:'code7'},
-      {id:'8', name:'Ιωάννα',       role:'', image:'images/ioanna.jpg',        code:'code8'},
-      {id:'9', name:'Μύρια',        role:'', image:'images/myria.jpg',         code:'code9'},
-      {id:'10',name:'Έλια',         role:'', image:'images/elia.jpg',          code:'code10'},
-      {id:'11',name:'Βαρνάβας',     role:'', image:'images/varnavas.jpg',      code:'code11'},
-      {id:'12',name:'Δήμητρα',      role:'', image:'images/dimitra.jpg',       code:'code12'},
-      {id:'13',name:'Δέσποινα',     role:'', image:'images/despoina.jpg',      code:'code13'},
-      {id:'14',name:'Μάρκος',       role:'', image:'images/markos.jpg',        code:'code14'},
-      {id:'15',name:'Μαρία Π.',     role:'', image:'images/maria-p.jpg',       code:'code15'},
-      {id:'16',name:'Μαρία Χ.',     role:'', image:'images/maria-x.jpg',       code:'code16'},
-      {id:'17',name:'Μαρία Τ.',     role:'', image:'images/maria-t.jpg',       code:'code17'},
-      {id:'18',name:'Άνθια Μικρή',  role:'', image:'images/anthia-mikri.jpg',  code:'code18'},
-      {id:'19',name:'Αγγέλα',       role:'', image:'images/aggela.jpg',        code:'code19'},
-      {id:'20',name:'Αχιλλέας',     role:'', image:'images/achilleas.jpg',     code:'code20'},
+      { id:'1',  name:'Άνθια', role:'', image:'images/anthia.jpg', code:'code1' },
+      { id:'2',  name:'Μιχάλης', role:'', image:'images/michalis.jpg', code:'code2' },
+      { id:'3',  name:'Ραφαέλλα', role:'', image:'images/rafaella.jpg', code:'code3' },
+      { id:'4',  name:'Γιώργος', role:'', image:'images/giorgos.jpg', code:'code4' },
+      { id:'5',  name:'Βάνια', role:'', image:'images/vania.jpg', code:'code5' },
+      { id:'6',  name:'Κατερίνα', role:'', image:'images/katerina.jpg', code:'code6' },
+      { id:'7',  name:'Φωτεινή', role:'', image:'images/fotini.jpg', code:'code7' },
+      { id:'8',  name:'Ιωάννα', role:'', image:'images/ioanna.jpg', code:'code8' },
+      { id:'9',  name:'Μύρια', role:'', image:'images/myria.jpg', code:'code9' },
+      { id:'10', name:'Έλια', role:'', image:'images/elia.jpg', code:'code10' },
+      { id:'11', name:'Βαρνάβας', role:'', image:'images/varnavas.jpg', code:'code11' },
+      { id:'12', name:'Δήμητρα', role:'', image:'images/dimitra.jpg', code:'code12' },
+      { id:'13', name:'Δέσποινα', role:'', image:'images/despoina.jpg', code:'code13' },
+      { id:'14', name:'Μάρκος', role:'', image:'images/markos.jpg', code:'code14' },
+      { id:'15', name:'Μαρία Π.', role:'', image:'images/maria-p.jpg', code:'code15' },
+      { id:'16', name:'Μαρία Χ.', role:'', image:'images/maria-x.jpg', code:'code16' },
+      { id:'17', name:'Μαρία Τ.', role:'', image:'images/maria-t.jpg', code:'code17' },
+      { id:'18', name:'Άνθια Μικρή', role:'', image:'images/anthia-mikri.jpg', code:'code18' },
+      { id:'19', name:'Αγγέλα', role:'', image:'images/aggela.jpg', code:'code19' },
+      { id:'20', name:'Αχιλλέας', role:'', image:'images/achilleas.jpg', code:'code20' }
     ];
-
-    // Persist unlocked profiles per-browser
-    let unlocked = new Set(JSON.parse(localStorage.getItem('unlockedMembers') || '[]'));
-
-    const app = document.getElementById('app');
-    const dlg = document.getElementById('unlockDialog');
-    const codeInput = document.getElementById('codeInput');
-    const dlgMsg = document.getElementById('dlgMsg');
-    const unlockBtn = document.getElementById('unlockBtn');
+    let unlocked = new Set();
     let currentMember = null;
-
     function render(){
+      const app = document.getElementById('app');
       app.innerHTML = '';
       const grid = document.createElement('div');
       grid.className = 'grid';
-
       members.forEach(m => {
         const isUnlocked = unlocked.has(m.id);
         const card = document.createElement('article');
         card.className = 'card' + (isUnlocked ? '' : ' locked');
         card.innerHTML = `
-          <div class=\"thumbnail\">${isUnlocked ? `<img src=\"${m.image}\" alt=\"${m.name}\" />` : 'Locked'}</div>
-          <div class=\"body\">
-            <div class=\"name\">${m.name}</div>
-            <div class=\"role\">${isUnlocked ? (m.role||'') : 'Locked'}</div>
+          <div class="thumbnail">${isUnlocked ? `<img src="${m.image}" alt="${m.name}" />` : ''}</div>
+          <div class="body">
+            <div class="name">${m.name}</div>
+            <div class="role">${isUnlocked ? (m.role||'') : 'Locked'}</div>
           </div>`;
         if(!isUnlocked){ card.addEventListener('click', ()=> openDialog(m)); }
         grid.appendChild(card);
       });
-
       app.appendChild(grid);
     }
-
     function openDialog(member){
       currentMember = member;
-      dlg.querySelector('#dlgTitle').textContent = `Unlock`;
-      dlgMsg.textContent = '';
-      codeInput.value = '';
-      dlg.showModal();
+      document.getElementById('dlgMsg').textContent = '';
+      const codeInput = document.getElementById('codeInput');
+      codeInput.value='';
+      document.getElementById('unlockDialog').showModal();
       setTimeout(()=>codeInput.focus(), 50);
     }
-
-    function verify(){
+    async function verify(){
       if(!currentMember) return;
-      if(codeInput.value.trim() === currentMember.code){
-        unlocked.add(currentMember.id);
-        localStorage.setItem('unlockedMembers', JSON.stringify([...unlocked]));
-        dlgMsg.textContent = 'Unlocked!';
-        dlgMsg.className = 'msg ok';
-        setTimeout(()=>{ dlg.close(); render(); }, 300);
+      const val = document.getElementById('codeInput').value.trim();
+      if(val === currentMember.code){
+        const snap = await get(unlockedRef);
+        const data = snap.exists() ? (snap.val()) : { ids: [] };
+        if(!data.ids.includes(currentMember.id)){
+          data.ids.push(currentMember.id);
+          await set(unlockedRef, data);
+        }
+        document.getElementById('dlgMsg').textContent = 'Unlocked!';
+        document.getElementById('dlgMsg').className = 'msg ok';
+        setTimeout(()=>{ document.getElementById('unlockDialog').close(); }, 250);
       } else {
-        dlgMsg.textContent = 'Λάθος κωδικός';
-        dlgMsg.className = 'msg err';
+        document.getElementById('dlgMsg').textContent = 'Λάθος κωδικός';
+        document.getElementById('dlgMsg').className = 'msg err';
       }
     }
-
-    unlockBtn.addEventListener('click', (e)=>{ e.preventDefault(); verify(); });
-    codeInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); verify(); }});
-
-    // Admin reset with passcode
+    document.getElementById('unlockBtn').addEventListener('click', e=>{ e.preventDefault(); verify(); });
+    document.getElementById('codeInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); verify(); }});
+    onValue(unlockedRef, (snap)=>{
+      const ids = snap.exists() ? (snap.val().ids || []) : [];
+      unlocked = new Set(ids);
+      render();
+    });
     (function(){
-      const ADMIN_CODE = 'Troop297Reset2025'; // ← change to your secret
-      const btn = document.getElementById('adminReset');
-      if (!btn) return;
-      btn.addEventListener('click', () => {
+      const ADMIN_CODE = 'Troop297Reset2025';
+      document.getElementById('adminReset').addEventListener('click', async ()=>{
         const code = prompt('Enter admin reset code:');
-        if (code === ADMIN_CODE) {
-          localStorage.removeItem('unlockedMembers');
-          alert('All profiles have been reset and are now locked.');
-          location.reload();
+        if(code === ADMIN_CODE){
+          await set(unlockedRef, { ids: [] });
+          alert('All profiles have been reset (for everyone).');
         } else if (code !== null) {
           alert('Wrong code.');
         }
       });
     })();
-
-    render();
   </script>
 </body>
 </html>
