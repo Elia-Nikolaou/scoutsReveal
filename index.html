@@ -50,9 +50,10 @@
 .thumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills the rectangle without distortion */
+  object-fit: contain; /* shows the whole picture */
   display: block;
 }
+
     .locked .thumbnail img{display:none;}
     .locked .thumbnail{color:transparent;}
     .body{padding:16px}
@@ -75,11 +76,11 @@
 </head>
 <body>
   <header>
-    <div class="top"><h1>297 Σύστημα Προσκόπων Λατσιών</h1></div>
+    <div class="top"><h1>297 Σύστημα Προσκόπων Λατσιών - Επιτελείο 2025 </h1></div>
   </header>
   <main id="app" class="wrap"></main>
   <footer>
-    <p>Σημείωση: Είναι για διασκέδαση — οι κωδικοί ελέγχονται στον φυλλομετρητή (client-side). Τα ξεκλειδώματα συγχρονίζονται για όλους μέσω Firebase.</p>
+    <p> Σημείωση: Είναι για διασκέδαση όχι για Security - only for 297 people!.</p>
   </footer>
   <dialog id="unlockDialog">
     <form method="dialog" class="modal" id="dialogForm">
