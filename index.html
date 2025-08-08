@@ -50,9 +50,11 @@
 .thumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills the rectangle without distortion */
+  object-fit: cover;       /* fills the rectangle */
+  object-position: top;    /* keep the top part visible */
   display: block;
 }
+
     .locked .thumbnail img{display:none;}
     .locked .thumbnail{color:transparent;}
     .body{padding:16px}
